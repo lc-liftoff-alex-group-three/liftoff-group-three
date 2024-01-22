@@ -15,7 +15,7 @@ import javax.validation.Valid;
         @GetMapping("/register")
         public String showRegistrationForm(Model model) {
             model.addAttribute(new User());
-            return "user/register";
+            return "register.html";
         }
 
         @PostMapping
@@ -24,10 +24,10 @@ import javax.validation.Valid;
             model.addAttribute("verify", verify);
 
             if (user.getPassword().equals(verify) && errors.hasErrors()) {
-                return "user/dashboard";
+                return "dashboard.html";
             } else {
                 model.addAttribute("error", "Passwords do not match");
-                return "user/register";
+                return "register.html";
             }
         }
 }

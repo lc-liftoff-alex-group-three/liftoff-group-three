@@ -6,6 +6,7 @@
     <title>Register</title>
 </head>
 <body>
+<div class="registrationDiv">
 <form method = 'post' th:action="@{/user}">
     <label>
         Username:
@@ -29,8 +30,9 @@
 
     <p th:text="${error}"></p>
 
-    <input type = 'submit' value = 'Sign Up'>
+    <input type = 'submit' value = 'Register'>
 </form>
+</div>
 
 </body>
 </html>
