@@ -2,9 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+
+    <title>Contact Us</title>
 </head>
 <body>
+
+<h1> Contact Us</h1>
+
+
+    <form method = "post" >
+        <input type="text" name="Name">
+        <input type="text" name="Email">
+        <input type="text" name="Message">
+        <input type="submit" value="Send">
+    </form>
+<!-- Christi-Lee don't forget needs a handler to accept post requests-->
+<!-- Christi-Lee don't forget css needs created so this form matches the look of the app when completed-->
 
 </body>
 </html>
