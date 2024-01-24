@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ContactController {
 
-    @GetMapping("/contact")
-    public String contactForm(Model model) {
+    @GetMapping("/resources/templates/contactform")
+    public String renderContactForm(Model model) {
         model.addAttribute("contact", new Contact());
         return "contact";
     }
