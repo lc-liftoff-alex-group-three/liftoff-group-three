@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
             model.addAttribute("verify", verify);
 
-            if (user.getPassword().equals(verify) && errors.hasErrors()) {
+            if (user.getPassword().equals(verify)) {
                 return "dashboard.html";
             } else {
                 model.addAttribute("error", "Passwords do not match");
