@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
+
 public class User {
 
    @NotBlank(message = "Username is required!")
