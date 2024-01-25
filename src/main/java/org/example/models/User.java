@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.beans.Transient;
+
 
 
 public class User {
