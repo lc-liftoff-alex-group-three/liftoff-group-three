@@ -1,5 +1,4 @@
 package org.example.models;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
