@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Goal Form</title>
+</head>
+<body>
+<img src="/images/goal-header.jpg" width="100%">
+<h1>Create a Rainbow Packed Goal</h1>
+<form action="/submit-goal" method="post">
+    <!-- Goal Name -->
+    <label for="goalName">Goal Name:</label>
+    <input type="text" id="goalName" name="goalName" required>
+
+    <!-- Description -->
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <!-- Assigned To -->
+    <label for="assignedTo">Assigned To:</label>
+    <input type="text" id="assignedTo" name="assignedTo" required>
+
+    <!-- Date Assigned (Auto-generated) -->
+    <label>Date Assigned:</label>
+    <input type="text" id="dateAssigned" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
+
+    <!-- Due Date -->
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" name="dueDate" required>
+
+    <!-- Reward -->
+    <label for="reward">Reward:</label>
+    <input type="text" id="reward" name="reward">
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
