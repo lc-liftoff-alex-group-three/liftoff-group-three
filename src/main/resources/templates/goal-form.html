@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="`fragments :: head}"></head>
     <meta charset="UTF-8">
     <title>Goal Form</title>
 </head>
 <body>
-<img src="/images/goal-header.jpg" width="100%">
+<!--<header th:replace="fragments :: header"></header> -->
+<img src="/static/css/images/goal-header.jpg" width="100%" alt="header">
 <h1>Create a Rainbow Packed Meal Plan</h1>
 <form action="/submit-goal" method="post">
     <!-- Goal Name -->
