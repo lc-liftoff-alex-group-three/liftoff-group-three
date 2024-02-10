@@ -1,1 +1,18 @@
+header {
+    background-color: purple;
+    padding: 10px 20px 10px 20px;
 
+}
+
+.form-signin {
+    max-width: 400px;
+    padding: 1rem;
+    background-color: #ffffff94;
+}
+
+#logo {
+    background-image: url(images/treasureTask-logo.png);
+    background-size: 100%;
+    height: 75px;
+    width: 150px;
+}

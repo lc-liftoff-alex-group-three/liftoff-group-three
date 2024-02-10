@@ -1,59 +1,47 @@
 package org.example.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Entity;
 
+import javax.validation.constraints.NotNull;
 
+@Entity
+public class User extends AbstractEntity {
 
-public class User {
+    @NotNull
+    private String username;
 
-   @NotBlank(message = "Username is required!")
-   @Size(min = 5, max = 15)
-   private String username;
+    @NotNull
+    private String pwHash;
 
-    @Email
-    private String email;
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    @NotBlank
-    @Size(min = 6)
-    private String password;
+    public User() {}
 
-
-
-    public User() {
-
-    }
-
-    public User(String username, String email, String password, String verifyPassword) {
+    public User(String username, String password) {
         this.username = username;
-        this.email = email;
-        this.password = password;
+        this.pwHash = encoder.encode(password);
     }
-
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean isMatchingPassword(String password) {
+
+        return encoder.matches(password, pwHash);
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPwHash() {
+        return pwHash;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 }
+
+
