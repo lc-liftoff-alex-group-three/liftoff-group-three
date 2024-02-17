@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -18,10 +19,11 @@ public class GoalsController {
     private GoalRepository goalRepository;
     @GetMapping("/goal-form")
     public String showGoalForm(Model model) {
+        List<String> dragonRewards = Arrays.asList("Red", "Orange & Yellow", "Green", "Blue & Purple", "Brown & White", "Rainbow");
+        model.addAttribute("dragonRewards", dragonRewards);
         model.addAttribute("goal", new Goals());
         return "goal-form";
     }
-
     @PostMapping("/submit-goal")
     public String submitGoalForm(@ModelAttribute Goals goal) {
         goalRepository.save(goal);

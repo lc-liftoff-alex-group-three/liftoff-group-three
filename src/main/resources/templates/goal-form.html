@@ -7,7 +7,7 @@
 <body>
 <!--<header th:replace="fragments :: header"></header> -->
 <img src="/static/css/images/goal-header.jpg" width="100%" alt="header">
-<h1>Create a Rainbow Packed Meal Plan</h1>
+<h1>Your Technicolor Taste Quest </h1>
 <form action="/submit-goal" method="post">
     <!-- Goal Name -->
     <label for="goalName">Goal Name:</label>
@@ -30,8 +30,15 @@
     <input type="date" id="dueDate" name="dueDate" required>
 
     <!-- Reward -->
-    <label for="reward">Reward:</label>
-    <input type="text" id="reward" name="reward">
+    <label for="dragonReward">Dragon Reward:</label>
+    <select id="dragonReward" name="dragonReward">
+        <option value="red">Red</option>
+        <option value="orange&yellow">Orange & Yellow</option>
+        <option value="green">Green</option>
+        <option value="blue&purple">Blue & Purple</option>
+        <option value="brown&white">Brown & White</option>
+        <option value="rainbow">Rainbow</option>
+    </select>
 
     <!-- Submit Button -->
     <button type="submit">Submit</button>
