@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+    <meta charset="UTF-8">
+    <title>Goal Form</title>
+</head>
+<body>
+<!--<header th:replace="fragments :: header"></header> -->
+<img src="/static/css/images/goal-header.jpg" width="100%" alt="header">
+<h1>Your Technicolor Taste Quest </h1>
+<form action="/submit-goal" method="post">
+    <!-- Goal Name -->
+    <label for="goalName">Goal Name:</label>
+    <input type="text" id="goalName" name="goalName" required>
+
+    <!-- Description -->
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <!-- Assigned To -->
+    <label for="assignedTo">Assigned To:</label>
+    <input type="text" id="assignedTo" name="assignedTo" required>
+
+    <!-- Date Assigned (Auto-generated) -->
+    <label>Date Assigned:</label>
+    <input type="text" id="dateAssigned" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
+
+    <!-- Due Date -->
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" name="dueDate" required>
+
+    <!-- Reward -->
+    <label for="dragonReward">Dragon Reward:</label>
+    <select id="dragonReward" name="dragonReward">
+        <option value="red">Red</option>
+        <option value="orange&yellow">Orange & Yellow</option>
+        <option value="green">Green</option>
+        <option value="blue&purple">Blue & Purple</option>
+        <option value="brown&white">Brown & White</option>
+        <option value="rainbow">Rainbow</option>
+    </select>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
