@@ -3,18 +3,23 @@ package org.example.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 @Entity
-public class Goals {
-    @Id
+public class Goals extends AbstractEntity {
+    @NotBlank
     private String goalName;
+    @NotBlank
     private String description;
+    @ManyToOne
     private String childAssigned;
     private LocalDate dueDate;
 
     @Column(nullable = false)
     private String dragonReward;
+
 
     public String getGoalName() {
         return goalName;

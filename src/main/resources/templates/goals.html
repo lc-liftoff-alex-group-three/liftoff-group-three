@@ -10,27 +10,27 @@
 
 <!-- Display list of goals -->
 <table>
-  <thead>
   <tr>
     <th>Goal Name</th>
     <th>Description</th>
     <th>Child Assigned</th>
     <th>Due Date</th>
     <th>Dragon Reward</th>
-    <!-- Add additional columns if needed -->
+    <th>Action</th> <!-- New column for delete button -->
   </tr>
-  </thead>
-  <tbody>
-  <!-- Iterate over goals and display each goal -->
   <tr th:each="goal : ${goals}">
     <td th:text="${goal.goalName}"></td>
     <td th:text="${goal.description}"></td>
     <td th:text="${goal.childAssigned}"></td>
     <td th:text="${goal.dueDate}"></td>
     <td th:text="${goal.dragonReward}"></td>
-    <!-- Add additional columns if needed -->
+    <td>
+      <form action="/delete-goal" method="post">
+        <input type="hidden" name="goalId" th:value="${goal.id}" /> <!-- Hidden field to store the goal id -->
+        <button type="submit">Delete</button>
+      </form>
+    </td>
   </tr>
-  </tbody>
 </table>
 
 <!-- Form for creating a new goal -->
