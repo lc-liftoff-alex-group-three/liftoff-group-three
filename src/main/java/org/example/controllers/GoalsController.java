@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class GoalsController {
 
     @Autowired
-    private GoalRepository;
+    private GoalRepository goalRepository;
     @GetMapping("/goal-form")
     public String showGoalForm(Model model) {
         model.addAttribute("goal", new Goals());
@@ -22,7 +24,15 @@ public class GoalsController {
 
     @PostMapping("/submit-goal")
     public String submitGoalForm(@ModelAttribute Goals goal) {
+        goalRepository.save(goal);
         // Handle form submission here will eventually connect to SQL database
-        return "redirect:/goal-form";
+        return "redirect:/goals";
     }
+    @GetMapping("/goals")
+    public String listGoals(Model model) {
+        List<Goals> goals = (List<Goals>) goalRepository.findAll();
+        model.addAttribute("goals", goals);
+        return "goals"; // Need to have a goals.html template to display the list of goals
+    }
+
 }

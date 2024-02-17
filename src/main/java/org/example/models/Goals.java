@@ -1,13 +1,17 @@
 package org.example.models;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+@Entity
 public class Goals {
+    @Id
     private String goalName;
     private String description;
     private String childAssigned;
     private LocalDate dueDate;
-    ;
+
     private String dragonReward;
 
     public String getGoalName() {

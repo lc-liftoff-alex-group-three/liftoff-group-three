@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals</title>
+</head>
+<body>
+<h1>Goals</h1>
+
+<!-- Display list of goals -->
+<table>
+  <thead>
+  <tr>
+    <th>Goal Name</th>
+    <th>Description</th>
+    <th>Child Assigned</th>
+    <th>Due Date</th>
+    <th>Dragon Reward</th>
+    <!-- Add additional columns if needed -->
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate over goals and display each goal -->
+  <tr th:each="goal : ${goals}">
+    <td th:text="${goal.goalName}"></td>
+    <td th:text="${goal.description}"></td>
+    <td th:text="${goal.childAssigned}"></td>
+    <td th:text="${goal.dueDate}"></td>
+    <td th:text="${goal.dragonReward}"></td>
+    <!-- Add additional columns if needed -->
+  </tr>
+  </tbody>
+</table>
+
+<!-- Form for creating a new goal -->
+<h2>Create New Goal</h2>
+<form action="/submit-goal" method="post">
+  <label for="goalName">Goal Name:</label>
+  <input type="text" id="goalName" name="goalName" required><br>
+
+  <label for="description">Description:</label>
+  <input type="text" id="description" name="description" required><br>
+
+  <label for="childAssigned">Child Assigned:</label>
+  <input type="text" id="childAssigned" name="childAssigned" required><br>
+
+  <label for="dueDate">Due Date:</label>
+  <input type="date" id="dueDate" name="dueDate" required><br>
+
+  <label for="dragonReward">Dragon Reward:</label>
+  <input type="text" id="dragonReward" name="dragonReward"><br>
+
+  <button type="submit">Create Goal</button>
+</form>
+</body>
+</html>
