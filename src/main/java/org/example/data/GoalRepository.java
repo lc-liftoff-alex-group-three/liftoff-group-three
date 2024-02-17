@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
-public interface GoalRepository extends CrudRepository<Goals, Integer> {
+public interface GoalRepository extends CrudRepository<Goals, Long> {
+    //might need custom query methods here
 }

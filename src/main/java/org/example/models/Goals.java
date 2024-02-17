@@ -13,8 +13,10 @@ public class Goals extends AbstractEntity {
     private String goalName;
     @NotBlank
     private String description;
-    @ManyToOne
-    private String childAssigned;
+    @ManyToOne // Many goals can be associated with one reward
+    private Rewards reward;
+    @ManyToOne // Many goals are assigned to one child user
+    private ChildUser childAssigned;
     private LocalDate dueDate;
 
     @Column(nullable = false)
@@ -37,14 +39,21 @@ public class Goals extends AbstractEntity {
         this.description = description;
     }
 
-    public String getChildAssigned() {
+    public ChildUser getChildAssigned() {
         return childAssigned;
     }
-
-    public void setChildAssigned(String childAssigned) {
-        this.childAssigned = childAssigned;
+    public Rewards getReward() {
+        return reward;
     }
 
+    public void setReward(Rewards reward) {
+        this.reward = reward;
+    }
+
+
+    public void setChildAssigned(ChildUser childAssigned) {
+        this.childAssigned = childAssigned;
+    }
     public LocalDate getDueDate() {
         return dueDate;
     }

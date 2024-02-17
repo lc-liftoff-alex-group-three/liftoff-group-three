@@ -36,7 +36,7 @@ public class GoalsController {
     }
     @DeleteMapping("/delete-goal/{id}")
     public String deleteGoal(@PathVariable("id") int id) {
-        goalRepository.deleteById(id);
+        goalRepository.deleteById((long) id);
         return "redirect:/goals";
     }
 
