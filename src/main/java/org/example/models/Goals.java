@@ -1,5 +1,6 @@
 package org.example.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -12,6 +13,7 @@ public class Goals {
     private String childAssigned;
     private LocalDate dueDate;
 
+    @Column(nullable = false)
     private String dragonReward;
 
     public String getGoalName() {
