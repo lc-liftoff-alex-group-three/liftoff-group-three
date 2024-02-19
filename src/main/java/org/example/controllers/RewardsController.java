@@ -9,14 +9,14 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/reward-gallery")
+@RequestMapping("/dragon-gallery")
 public class RewardsController {
 
-    @GetMapping("/reward-gallery")
+    @GetMapping
     public String showRewardGallery(Model model) {
-        List<String> rewards = Arrays.asList("red.jpg", "green.jpg", "orange&yellow.jpg", "brown&white.jpg", "blue&purple.jpg", "rainbow.jpg");
+        List<String> rewards = Arrays.asList("red.jpg", "green.jpg", "orangeandyellow.jpg", "brownandwhite.jpg", "blueandpurple.jpg", "rainbow.jpg");
         model.addAttribute("rewards", rewards);
-        return "rewards/reward-gallery"; // Assuming you have a rewards/gallery.html template
+        return "dragon-gallery"; // Assuming your HTML template is directly in the "templates" folder
     }
 
 }
