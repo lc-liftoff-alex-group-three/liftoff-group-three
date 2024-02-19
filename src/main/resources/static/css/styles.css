@@ -16,3 +16,19 @@ header {
     height: 75px;
     width: 150px;
 }
+.image-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    height: auto;
+    margin-bottom: 20px; /* Adjust the margin between images */
+}
+
+/* Partially transparent class */
+.partially-transparent {
+    opacity: 0.5; /* Adjust the opacity level as needed */
+}
