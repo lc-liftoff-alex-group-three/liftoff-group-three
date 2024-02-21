@@ -11,29 +11,46 @@
 <h1> Contact Us</h1>
 
 
-    <form method = "post" >
+<form th:action="@{/contact}" th:method="post" th:object="${contact}">
 
-        <label for="userName"> User Name</label>
-        <input type="text" th:field="*{userName}">
+<label for="userName"> User Name</label>
+        <input type="text" th:field="*{userName}" required pattern="[A-Za-z0-9]+">
 
         <label for="firstName"> First Name</label>
-        <input type="text" th:field="*{firstName}">
+        <input type="text" th:field="*{firstName}" required>
 
         <label for="lastName"> Last Name</label>
-        <input type="text" th:field="*{lastName}">
+        <input type="text" th:field="*{lastName}" required>
 
         <label for="email"> Email</label>
-        <input type="email" th:field="*{email}">
+        <input type="email" th:field="*{email}" required>
 
         <label for="message"> Message</label>
-        <input type="text" th:field="*{message}">
+    <textarea  th:field="*{message}" required></textarea>
 
 
+    <div th:if="${#fields.hasErrors('userName')}">
+        <p th:errors="*{userName}">Invalid User Name. Please try again!</p>
+    </div>
+    <div th:if="${#fields.hasErrors('firstName')}">
+        <p th:errors="*{firstName}">Please enter a valid First Name. </p>
+    </div>
+
+    <div th:if="${#fields.hasErrors('lastName')}">
+        <p th:errors="*{lastName}">Please enter a valid Last Name.</p>
+    </div>
+    <div th:if="${#fields.hasErrors('email')}">
+        <p th:errors="*{email}">Please enter a valid email.</p>
+    </div>
+    <div th:if="${#fields.hasErrors('message')}">
+        <p th:errors="*{message}">Message can not be left blank.</p>
+    </div>
 
         <button type="submit"> Submit</button>
     </form>
-<!-- Christi-Lee don't forget needs a handler to accept post requests-->
-<!-- Christi-Lee don't forget css needs created so this form matches the look of the app when completed-->
+
+<br/>
+<h1 th:text="${message}">message</h1>
 
 </body>
 </html>

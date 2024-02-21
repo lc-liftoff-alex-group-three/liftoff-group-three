@@ -1,12 +1,21 @@
 package org.example.models;
 
 
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
 
 public class Contact {
+    @NotEmpty(message= "User name is required.")
+    @Size(min=4, max=50, message= "User name must be between 4 and 50 characters.")
+
     private String userName;
     private String firstName;
+    @NotEmpty(message= "First Name is required.")
     private String lastName;
+    @NotEmpty(message= "Last Name is required.")
+
+    @Email(message= "Email should be valid.")
     private String email;
     private String message;
 
