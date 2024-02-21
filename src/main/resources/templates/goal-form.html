@@ -3,45 +3,74 @@
 <head th:replace="fragments :: head"></head>
     <meta charset="UTF-8">
     <title>Goal Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goals</title>
+<!-- Include Barbie font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barbie&display=swap">
+<!-- Include Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Apply Barbie font to the header */
+    h1 {
+      font-family: 'Barbie', sans-serif;
+    }
+</style>
 </head>
 <body>
+<div th:replace="fragments :: header"></div>
 <!--<header th:replace="fragments :: header"></header> -->
 <img src="/images/parent-header.jpg" width="100%" alt="header">
-<h1>Color Pallet Goals</h1>
-<form action="/submit-goal" method="post">
-    <!-- Goal Name -->
-    <label for="goalName">Goal Name:</label>
-    <input type="text" id="goalName" name="goalName" required>
+<div class="container">
+    <h1 class="mt-5 mb-4">Color Palette Goals</h1>
+    <form action="/submit-goal" method="post">
+        <!-- Goal Name -->
+        <div class="mb-3">
+            <label for="goalName" class="form-label">Goal Name:</label>
+            <input type="text" id="goalName" name="goalName" class="form-control" required>
+        </div>
 
-    <!-- Description -->
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea>
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
 
-    <!-- Assigned To -->
-    <label for="assignedTo">Assigned To:</label>
-    <input type="text" id="assignedTo" name="assignedTo" required>
+        <!-- Assigned To -->
+        <div class="mb-3">
+            <label for="assignedTo" class="form-label">Assigned To:</label>
+            <input type="text" id="assignedTo" name="assignedTo" class="form-control" required>
+        </div>
 
-    <!-- Date Assigned (Auto-generated) -->
-    <label>Date Assigned:</label>
-    <input type="text" id="dateAssigned" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly>
+        <!-- Date Assigned (Auto-generated) -->
+        <div class="mb-3">
+            <label class="form-label">Date Assigned:</label>
+            <input type="text" id="dateAssigned" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" class="form-control" readonly>
+        </div>
 
-    <!-- Due Date -->
-    <label for="dueDate">Due Date:</label>
-    <input type="date" id="dueDate" name="dueDate" required>
+        <!-- Due Date -->
+        <div class="mb-3">
+            <label for="dueDate" class="form-label">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate" class="form-control" required>
+        </div>
 
-    <!-- Reward -->
-    <label for="dragonReward">Dragon Reward:</label>
-    <select id="dragonReward" name="dragonReward">
-        <option value="red">Red</option>
-        <option value="orange&yellow">Orange & Yellow</option>
-        <option value="green">Green</option>
-        <option value="blue&purple">Blue & Purple</option>
-        <option value="brown&white">Brown & White</option>
-        <option value="rainbow">Rainbow</option>
-    </select>
+        <!-- Reward -->
+        <div class="mb-3">
+            <label for="dragonReward" class="form-label">Dragon Reward:</label>
+            <select id="dragonReward" name="dragonReward" class="form-select">
+                <option value="red">Red</option>
+                <option value="orange&yellow">Orange & Yellow</option>
+                <option value="green">Green</option>
+                <option value="blue&purple">Blue & Purple</option>
+                <option value="brown&white">Brown & White</option>
+                <option value="rainbow">Rainbow</option>
+            </select>
+        </div>
 
-    <!-- Submit Button -->
-    <button type="submit">Submit</button>
-</form>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
 </body>
 </html>

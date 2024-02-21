@@ -20,7 +20,11 @@ header {
     display: flex;
     flex-direction: column;
 }
+.Logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
 
+}
 .image-container img {
     width: 100%;
     max-width: 600px; /* Adjust the maximum width as needed */
@@ -31,4 +35,12 @@ header {
 /* Partially transparent class */
 .partially-transparent {
     opacity: 0.5; /* Adjust the opacity level as needed */
+}
+h1, h2, h3 {
+    font-family: 'Barbie', sans-serif;
+
+
+}
+body {
+    font-family: 'Barbie', sans-serif;
 }

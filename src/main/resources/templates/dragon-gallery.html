@@ -1,22 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dragon Gallery</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barbie&display=swap">
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Include Custom CSS -->
+  <link href="/css/styles.css" rel="stylesheet">
+  <style>
+    /* Apply Barbie font to the h1 */
+    h1 {
+      font-family: 'Barbie', sans-serif;
+    }
+  </style>
 </head>
 <body>
+</head>
+<body>
+
+<!-- Include the header fragment -->
+<header th:replace="fragments :: header"></header>
+
 <img src="/images/dragon-gallery.png" width="100%" alt="header">
 <h1>Welcome to Your Dragon Gallery</h1>
 <div class="image-container">
-  <img src="/images/red.jpg" width="50%" alt="Red Dragon">
-  <img src="/images/blueandpurple.jpg" width="50%" alt="Blue and Purple Dragon">
-  <img src="/images/brownandwhite.jpg" width="50%" alt="Brown and White Dragon">
-  <img src="/images/green.jpg" width="50%" alt="Green Dragon">
-  <img src="/images/orangeandyellow.jpg" width="50%" alt="Orange and Yellow Dragon">
-  <img src="/images/rainbow.jpg" width="50%" alt="Rainbow Dragon">
+  <div class="image-with-button">
+    <img src="/images/red.jpg" class="dragon-image" alt="Red Dragon" id="redDragon" onclick="toggleOpacity('redDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('redDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('redDragon', 0.25)">Locked</button>
+  </div>
+  <div class="image-with-button">
+    <img src="/images/blueandpurple.jpg" class="dragon-image" alt="Blue and Purple Dragon" id="bluePurpleDragon" onclick="toggleOpacity('bluePurpleDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('bluePurpleDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('bluePurpleDragon', 0.25)">Locked</button>
+  </div>
+  <div class="image-with-button">
+    <img src="/images/brownandwhite.jpg" class="dragon-image" alt="Brown and White Dragon" id="brownWhiteDragon" onclick="toggleOpacity('brownWhiteDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('brownWhiteDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('brownWhiteDragon', 0.25)">Locked</button>
+  </div>
+  <div class="image-with-button">
+    <img src="/images/green.jpg" class="dragon-image" alt="Green Dragon" id="greenDragon" onclick="toggleOpacity('greenDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('greenDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('greenDragon', 0.25)">Locked</button>
+  </div>
+  <div class="image-with-button">
+    <img src="/images/orangeandyellow.jpg" class="dragon-image" alt="Orange and Yellow Dragon" id="orangeYellowDragon" onclick="toggleOpacity('orangeYellowDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('orangeYellowDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('orangeYellowDragon', 0.25)">Locked</button>
+  </div>
+  <div class="image-with-button">
+    <img src="/images/rainbow.jpg" class="dragon-image" alt="Rainbow Dragon" id="rainbowDragon" onclick="toggleOpacity('rainbowDragon')">
+    <button class="btn btn-primary" onclick="setOpacity('rainbowDragon', 1)">Unlocked</button>
+    <button class="btn btn-primary" onclick="setOpacity('rainbowDragon', 0.25)">Locked</button>
+  </div>
+
+<!-- Add buttons to control opacity -->
+<div class="container mt-3">
+  <button class="btn btn-primary mr-2" onclick="setOpacity('redDragon', 1)">Unlocked</button>
+  <button class="btn btn-primary" onclick="setOpacity('redDragon', 0.25)">Locked</button>
 </div>
+
+<script>
+  function toggleOpacity(imageId) {
+    var image = document.getElementById(imageId);
+    if (image.style.opacity === '0.25') {
+      image.style.opacity = '1';
+    } else {
+      image.style.opacity = '0.25';
+    }
+  }
+
+  function setOpacity(imageId, opacity) {
+    document.getElementById(imageId).style.opacity = opacity;
+  }
+</script>
 
 </body>
 </html>

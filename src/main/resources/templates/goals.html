@@ -1,58 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Goals</title>
+  <!-- Include Barbie font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barbie&display=swap">
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Apply Barbie font to the header */
+    h1, h2 {
+      font-family: 'Barbie', sans-serif;
+    }
+
+  </style>
 </head>
 <body>
+<div th:replace="fragments :: header"></div>
 <img src="/images/goal-header.jpg" width="100%" alt="header">
-<h1>Goals</h1>
+<div class="container">
+  <!-- Goals header with Barbie font -->
+  <h1 class="mb-4">Goals</h1>
 
-<!-- Display list of goals -->
-<table>
-  <tr>
-    <th>Goal Name</th>
-    <th>Description</th>
-    <th>Child Assigned</th>
-    <th>Due Date</th>
-    <th>Dragon Reward</th>
-    <th>Action</th> <!-- New column for delete button -->
-  </tr>
-  <tr th:each="goal : ${goals}">
-    <td th:text="${goal.goalName}"></td>
-    <td th:text="${goal.description}"></td>
-    <td th:text="${goal.childAssigned}"></td>
-    <td th:text="${goal.dueDate}"></td>
-    <td th:text="${goal.dragonReward}"></td>
-    <td>
-      <form action="/delete-goal" method="post">
-        <input type="hidden" name="goalId" th:value="${goal.id}" /> <!-- Hidden field to store the goal id -->
-        <button type="submit">Delete</button>
-      </form>
-    </td>
-  </tr>
-</table>
+  <!-- Display list of goals -->
+  <table class="table table-striped table-hover">
+    <thead class="table-info">
+    <tr>
+      <th scope="col">Goal Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Child Assigned</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Dragon Reward</th>
+      <th scope="col">Completed</th> <!-- New column for completed checkbox -->
+      <th scope="col">Approved</th> <!-- New column for approved checkbox -->
+      <th scope="col">Action</th> <!-- New column for delete button -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through goals -->
+    <tr th:each="goal : ${goals}">
+      <td th:text="${goal.goalName}"></td>
+      <td th:text="${goal.description}"></td>
+      <td th:text="${goal.childAssigned}"></td>
+      <td th:text="${goal.dueDate}"></td>
+      <td th:text="${goal.dragonReward}"></td>
+      <td>
+        <input type="checkbox" th:checked="${goal.completed}" th:onclick="'toggleCompletion(' + ${goal.id} + ')'" />
+      </td>
+      <td>
+        <input type="checkbox" th:checked="${goal.approved}" th:onclick="'toggleApproval(' + ${goal.id} + ')'" />
+      </td>
+      <td>
+        <form action="/delete-goal" method="post">
+          <input type="hidden" name="goalId" th:value="${goal.id}" /> <!-- Hidden field to store the goal id -->
+          <button type="submit" class="btn btn-warning">Delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-<!-- Form for creating a new goal -->
-<h2>Create New Goal</h2>
-<form action="/submit-goal" method="post">
-  <label for="goalName">Goal Name:</label>
-  <input type="text" id="goalName" name="goalName" required><br>
 
-  <label for="description">Description:</label>
-  <input type="text" id="description" name="description" required><br>
+<!--  &lt;!&ndash; Form for creating a new goal &ndash;&gt;-->
+<!--  <h2 class="mb-3">Create New Goal</h2>-->
+<!--  <form action="/submit-goal" method="post">-->
+<!--    <div class="mb-3">-->
+<!--      <label for="goalName" class="form-label">Goal Name:</label>-->
+<!--      <input type="text" id="goalName" name="goalName" class="form-control" required>-->
+<!--    </div>-->
 
-  <label for="childAssigned">Child Assigned:</label>
-  <input type="text" id="childAssigned" name="childAssigned" required><br>
+<!--    <div class="mb-3">-->
+<!--      <label for="description" class="form-label">Description:</label>-->
+<!--      <input type="text" id="description" name="description" class="form-control" required>-->
+<!--    </div>-->
 
-  <label for="dueDate">Due Date:</label>
-  <input type="date" id="dueDate" name="dueDate" required><br>
+<!--    <div class="mb-3">-->
+<!--      <label for="childAssigned" class="form-label">Child Assigned:</label>-->
+<!--      <input type="text" id="childAssigned" name="childAssigned" class="form-control" required>-->
+<!--    </div>-->
 
-  <label for="dragonReward">Dragon Reward:</label>
-  <input type="text" id="dragonReward" name="dragonReward"><br>
+<!--    <div class="mb-3">-->
+<!--      <label for="dueDate" class="form-label">Due Date:</label>-->
+<!--      <input type="date" id="dueDate" name="dueDate" class="form-control" required>-->
+<!--    </div>-->
 
-  <button type="submit">Create Goal</button>
-</form>
+<!--    <div class="mb-3">-->
+<!--      <label for="dragonReward" class="form-label">Dragon Reward:</label>-->
+<!--      <input type="text" id="dragonReward" name="dragonReward" class="form-control">-->
+<!--    </div>-->
+
+<!--    <button type="submit" class="btn btn-primary">Create Goal</button>-->
+<!--  </form>-->
+<!--</div>-->
+<!-- Include Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Your custom script -->
+<script>
+  function toggleCompletion(goalId) {
+    // Logic to toggle the completion status of the goal with the given ID
+    // This function should make an AJAX request to update the completion status in the database
+  }
+
+  function toggleApproval(goalId) {
+    // Logic to toggle the approval status of the goal with the given ID
+    // This function should make an AJAX request to update the approval status in the database
+  }
+</script>
 </body>
 </html>
