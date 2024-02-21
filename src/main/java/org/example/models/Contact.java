@@ -10,13 +10,15 @@ public class Contact {
     @Size(min=4, max=50, message= "User name must be between 4 and 50 characters.")
 
     private String userName;
-    private String firstName;
     @NotEmpty(message= "First Name is required.")
-    private String lastName;
+    private String firstName;
     @NotEmpty(message= "Last Name is required.")
+    private String lastName;
+
 
     @Email(message= "Email should be valid.")
     private String email;
+    @NotEmpty(message = "Message cannot be left blank.")
     private String message;
 
     public String getUserName() {
