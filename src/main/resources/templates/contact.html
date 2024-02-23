@@ -31,32 +31,32 @@
 
         <div class="form-group">
             <label>User Name:
-                <input th:field="${addcontact-formDTO.userName}" class="form-control">
+                <input th:field="${contact.userName}" class="form-control">
             </label>
-
+            <p class="error" th:errors="${contact.userName}"></p>
         </div>
 
         <div class="form-group">
             <label>First Name:
-                <input th:field="${addcontact-formDTO.firstName}" class="form-control">
+                <input th:field="${contact.firstName}" class="form-control">
             </label>
         </div>
 
         <div class="form-group">
             <label>Last Name:
-                <input th:field="${addcontact-formDTO.lastName}" class="form-control">
+                <input th:field="${contact.lastName}" class="form-control">
             </label>
         </div>
 
         <div class="form-group">
             <label>Email:
-                <input th:field="${addcontact-formDTO.email}" class="form-control">
+                <input th:field="${contact.email}" class="form-control">
             </label>
         </div>
 
         <div class="form-group">
             <label >Message:
-                <input th:field="${addcontact-formDTO.message}" class="form-control">
+                <input th:field="${contact.message}" class="form-control">
             </label>
         </div>
 
@@ -64,7 +64,7 @@
             <input type="submit" value="Submit" class="btn btn-success">
         </div>
     </form>
-
+<p th:text="${message}"></p>
 </main>
 
 </body>

@@ -1,20 +1,19 @@
 package org.example.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 public class Contact {
 
     @Id
+    @GeneratedValue
     private Long id;
-    @NotEmpty(message= "User name is required.")
+    @NotNull(message= "User name is required.")
     @Size(min=4, max=50, message= "User name must be between 4 and 50 characters.")
-
     private String userName;
     @NotEmpty(message= "First Name is required.")
     private String firstName;
