@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Gallery</title>
+<!-- Include Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  /* Apply Barbie font to the header */
+  h1, h2 {
+    font-family: 'Barbie', sans-serif;
+  }
+</style>
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+<!--<header th:replace="fragments :: header"></header> -->
+<img src="/images/dragon-gallery.png" width="100%" alt="header">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon Gallery</title>
+  <!-- Include Barbie font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barbie&display=swap">
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Apply Barbie font to the header */
+    h1, h2 {
+      font-family: 'Barbie', sans-serif;
+    }
+
+    /* Style for unlocked button */
+    .unlocked-button {
+      background-color: green;
+    }
+
+    /* Style for locked button */
+    .locked-button {
+      background-color: red;
+    }
+
+    /* Style for image container */
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* Style for each image */
+    .image-with-button {
+      margin: 10px;
+    }
+
+    /* Style for dragon images */
+    .dragon-image {
+      width: 200px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+
+
+<!-- Dragon Images with Buttons -->
+<div class="container">
+  <div class="image-container">
+    <div class="image-with-button">
+      <img src="/images/red.jpg" class="dragon-image" alt="Red Dragon" id="redDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('redDragon')">Unlocked</button>
+    </div>
+    <div class="image-with-button">
+      <img src="/images/blueandpurple.jpg" class="dragon-image" alt="Blue and Purple Dragon" id="bluePurpleDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('bluePurpleDragon')">Unlocked</button>
+    </div>
+    <div class="image-with-button">
+      <img src="/images/green.jpg" class="dragon-image" alt="Green Dragon" id="greenDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('greenDragon')">Unlocked</button>
+    </div>
+    <div class="image-with-button">
+      <img src="/images/orangeandyellow.jpg" class="dragon-image" alt="Orange and Yellow Dragon" id="orangeYellowDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('orangeYellowDragon')">Unlocked</button>
+    </div>
+    <div class="image-with-button">
+      <img src="/images/brownandwhite.jpg" class="dragon-image" alt="Brown and White Dragon" id="brownWhiteDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('brownWhiteeDragon')">Unlocked</button>
+    </div>
+    <div class="image-with-button">
+      <img src="/images/rainbow.jpg" class="dragon-image" alt="Rainbow Dragon" id="rainbowDragon">
+      <button class="btn unlocked-button" onclick="toggleOpacity('rainbowDragon')">Unlocked</button>
+    </div>
+    <!-- Add more dragon images with buttons here -->
+  </div>
+</div>
+
+<!-- Include Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom Script -->
+<script>
+  function toggleOpacity(imageId) {
+    var image = document.getElementById(imageId);
+    var button = document.querySelector(`#${imageId} + button`);
+    if (image.style.opacity === '0.25') {
+      image.style.opacity = '1';
+      button.classList.remove('locked-button');
+      button.classList.add('unlocked-button');
+      button.innerText = 'Unlocked';
+    } else {
+      image.style.opacity = '0.25';
+      button.classList.remove('unlocked-button');
+      button.classList.add('locked-button');
+      button.innerText = 'Locked';
+    }
+  }
+</script>
+
+</body>
+</html>

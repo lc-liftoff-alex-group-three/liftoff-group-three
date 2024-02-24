@@ -21,6 +21,13 @@ public class Goals extends AbstractEntity {
 
     @Column(nullable = false)
     private String dragonReward;
+    private boolean completed; // New field for tracking completion status
+
+    private LocalDate completedDate; // New field for tracking completion date
+
+    private boolean approved; // New field for tracking approval status
+
+    private LocalDate approvedDate; // New field for tracking approval date
 
 
     public String getGoalName() {
@@ -68,5 +75,37 @@ public class Goals extends AbstractEntity {
 
     public void setDragonReward(String dragonReward) {
         this.dragonReward = dragonReward;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public LocalDate getCompletedDate() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(LocalDate completedDate) {
+        this.completedDate = completedDate;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
+
+    public LocalDate getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(LocalDate approvedDate) {
+        this.approvedDate = approvedDate;
     }
 }
