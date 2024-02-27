@@ -27,7 +27,8 @@ class BlogController {
 
     @PostMapping("/ new-post")
     public String handlePostForm(Model model, @ModelAttribute Blog blog){
-       blogData.add(blog);
+       model.addAttribute("blog", blog);
+        blogData.add(blog);
         return "displayPost";
     }
 }
