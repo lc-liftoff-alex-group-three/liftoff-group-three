@@ -16,7 +16,7 @@ class BlogController {
     @GetMapping
     public String home(Model model){
         model.addAttribute("title", "Dragon Admin Blog");
-        model.addAttribute("messages", BlogData.getAll());
+        model.addAttribute("blogs", BlogData.getAll());
         return "home";
     }
 

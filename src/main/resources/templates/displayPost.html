@@ -7,12 +7,10 @@
 <body>
 
 <p th: replace="fragments::navbar"></p>
-<div th:if="${messages.size()} > 0">
-    <th:block th: each "message:${messages}">
-    <p> <strong th:text="${title.key"}></strong> Latest and Greatest <strong th:test="${message.value}"></strong></p>
-    </th:block>
-</div>
-<p th:unless="${statuses.size()} > 0">No Messages Found. </p>
-
+<p th:replace="home::blog"></p>
+<!--<h1 th:text ="${blog.title"></h1>-->
+<!--<p th:text="${blog.content"></p>-->
+<!--<p th:text="'The latest and greatest' + ${blog.status"></p>-->
+<!--<p th:text="${blog.time"></p>-->
 </body>
 </html>
