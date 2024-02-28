@@ -11,8 +11,6 @@ class BlogController {
 
     private BlogData blogData   = new BlogData();
 
-
-
     @GetMapping
     public String home(Model model){
         model.addAttribute("title", "Dragon Admin Blog");
@@ -26,7 +24,7 @@ class BlogController {
     }
 
     @PostMapping("/ new-post")
-    public String handlePostForm(Model model, @ModelAttribute Blog blog){
+    public String handlePostForm(Model model,  Blog blog){
        model.addAttribute("blog", blog);
         blogData.add(blog);
         return "displayPost";
