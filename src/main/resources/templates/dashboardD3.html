@@ -1,0 +1,42 @@
+<html>
+<head></head>
+<body>
+<div id="pie"></div>
+<button id="addData"> Display the Rainbow </button>
+
+<script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+<script src="d3pie.js"></script>
+<script src="d3.min.js"></script>
+<script>
+    var data = [
+    { label: "Red", value: 15 },
+    { label: "Orange", value: 15 },
+    { label: "Yellow", value: 20 },
+    { label: "Blue", value: 35 },
+    { label: "Green", value: 5 },
+    { label: "purple", value: 10 },
+    ];
+
+    var pie = new d3pie("pie", {
+    data: {
+    content: data
+    }
+    });
+
+    $(function() {
+    var num = 6;
+    $("#addData").on("click", function() {
+    data.push({
+    label: num.toString(),
+    value: Math.floor(Math.random() * 10) + 1
+    });
+
+    pie.updateProp("data.content", data);
+    num++;
+    });
+    });
+</script>
+</body>
+</html>
