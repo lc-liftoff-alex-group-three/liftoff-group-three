@@ -9,7 +9,7 @@ public class BlogData {
 
     private static Map<Integer, Blog>blogs = new HashMap<>();
 
-    public static String getAll() {return blogs.values();     }
+    public static String getAll() {return blogs.values().toString();     }
     public static void add(Blog blog) {blogs.put(blog.getId(), blog);}
     public static Blog getById (Integer id) { return blogs.get(id);}
     public static void remove (Integer id) {

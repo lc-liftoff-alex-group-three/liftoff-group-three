@@ -4,7 +4,6 @@ package org.example.controllers;
 import org.example.data.BlogData;
 import org.example.models.Blog;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 class BlogController {
@@ -25,7 +24,7 @@ class BlogController {
 
     @PostMapping("/ new-post")
     public String handlePostForm(Model model,  Blog blog){
-       model.addAttribute("blog", blog);
+       model.addAttribute("blog", String.valueOf(blog));
         blogData.add(blog);
         return "displayPost";
     }

@@ -8,7 +8,7 @@ public class Blog {
     private int id;
     private static int nextId;
 @NotBlank(message = "Title can not be blank.")
-@Size
+//@Size
     private String title;
 @NotBlank
     private String content;
