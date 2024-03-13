@@ -26,6 +26,10 @@ public class Blog {
 
     }
 
+    public Blog() {
+
+    }
+
     public String getTitle() {
         return title;
     }
