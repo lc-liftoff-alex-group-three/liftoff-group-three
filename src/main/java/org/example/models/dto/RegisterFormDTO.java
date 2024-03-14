@@ -16,6 +16,9 @@ public class RegisterFormDTO extends LoginFormDTO {
     @Size (max = 50, message = "Last Name is too long")
     private String lastName;
 
+    @NotBlank (message = "Email is required")
+    private String email;
+
     public String getVerifyPassword() {
         return verifyPassword;
     }
@@ -30,6 +33,14 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLastName() {

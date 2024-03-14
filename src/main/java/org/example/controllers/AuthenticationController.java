@@ -30,6 +30,8 @@ public class AuthenticationController {
     ParentRepository parentRepository;
     @Autowired
     ChildRepository childRepository;
+    @Autowired
+    EmailVerification emailVerification;
 
     private static final String userSessionKey = "user";
 
@@ -100,8 +102,15 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO, Errors errors, HttpServletRequest request, Model model) {
+        String emailAddress = registerFormDTO.getEmail();
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Register");
+            return "register";
+        }
+
+        if (!emailVerification.verifyEmail(emailAddress)) {
+            errors.rejectValue("email", "email.invalid", "Invalid email address");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -126,7 +135,7 @@ public class AuthenticationController {
 
         ParentUser newParentUser = new ParentUser(registerFormDTO.getUsername(), hashed);
         userRepository.save(newParentUser);
-        setUserInSession(request.getSession(), newParentUser);
+//        setUserInSession(request.getSession(), newParentUser);
         Parent newParent = new Parent(registerFormDTO.getFirstName(), registerFormDTO.getLastName(), newParentUser);
         parentRepository.save(newParent);
         return "redirect:/login";
