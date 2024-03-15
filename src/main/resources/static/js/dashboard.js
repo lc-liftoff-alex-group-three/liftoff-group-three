@@ -47,6 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .enter().append("path")
         .attr("fill", d => color(d.data.hex))
         .attr("d", arcs)
-        .append("title") // Tooltip showing the color and value
+        .append("title")
         .text(d => `${d.data.color}: ${d.data.value}`);
 });
