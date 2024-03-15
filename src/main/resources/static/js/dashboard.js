@@ -14,21 +14,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const barcodeWidth = 400, barcodeHeight = 20;
 
+//    Added space for adding label
+ const svgHeight = barcodeHeight + 60;
+
     const barcodeSvg = d3.select('#goals-barcode').append('svg')
         .attr('width', barcodeWidth)
-        .attr('height', barcodeHeight);
+        .attr('height', svgHeight);
 
-    // Total Goals
+    // Total Goals bar
     barcodeSvg.append('rect')
         .attr('width', barcodeWidth)
         .attr('height', barcodeHeight)
         .attr('fill', '#ccc');
 
-    // Completed Goals
+
+    // Completed Goals bar
     barcodeSvg.append('rect')
         .attr('width', barcodeWidth * (goalsData.completed / goalsData.total))
         .attr('height', barcodeHeight)
         .attr('fill', 'green');
+
+           // Label for Total Goals ("Goals Assigned")
+            barcodeSvg.append("text")
+                .attr("x", barcodeWidth / 2) // Center of the SVG
+                .attr("y", barcodeHeight + 20) // Positioned below the total goals bar
+                .text(`Goals Assigned: ${goalsData.total}`)
+                .attr("text-anchor", "middle")
+                .style("fill", "black")
+                .style("font-size", "14px");
+
+    // Label for Completed Goals ("Goals Accomplished")
+    barcodeSvg.append("text")
+        .attr("x", (barcodeWidth * (goalsData.completed / goalsData.total)) / 2) // Center of the completed part
+        .attr("y", barcodeHeight + 40) // Below the first label
+        .text(`Goals Accomplished: ${goalsData.completed}`)
+        .attr("text-anchor", "middle")
+        .style("fill", "green")
+        .style("font-size", "14px");
 
     const pieRadius = 100;
     const pieSvg = d3.select("#goals-pie").append("svg")
@@ -49,4 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
         .attr("d", arcs)
         .append("title")
         .text(d => `${d.data.color}: ${d.data.value}`);
+
+
+  // Add Text to Pie Chart centered
+    pieSvg.selectAll("text")
+         .data(pie(goalsData.byColor))
+         .enter().append("text")
+         .attr("transform", d => `translate(${arcs.centroid(d)})`)
+         .attr("text-anchor", "middle")
+         .text(d => `${d.data.color}: ${d.data.value}`)
+         .style("fill", "white")
+         .style("font-size", "12px");
 });
