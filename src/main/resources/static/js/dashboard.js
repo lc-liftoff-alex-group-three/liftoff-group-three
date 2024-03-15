@@ -38,19 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
             barcodeSvg.append("text")
                 .attr("x", barcodeWidth / 2) // Center of the SVG
                 .attr("y", barcodeHeight + 20) // Positioned below the total goals bar
-                .text(`Goals Assigned: ${goalsData.total}`)
-                .attr("text-anchor", "middle")
-                .style("fill", "black")
-                .style("font-size", "14px");
+                .text(`Goals Assigned: ${goalsData.total}`) // Text for Label Name
+                .attr("text-anchor", "middle")  // positioning of the label
+                .style("fill", "black")  // color and type of look
+                .style("font-size", "14px");  // size for the label type
 
     // Label for Completed Goals ("Goals Accomplished")
     barcodeSvg.append("text")
         .attr("x", (barcodeWidth * (goalsData.completed / goalsData.total)) / 2) // Center of the completed part
         .attr("y", barcodeHeight + 40) // Below the first label
-        .text(`Goals Accomplished: ${goalsData.completed}`)
-        .attr("text-anchor", "middle")
-        .style("fill", "green")
-        .style("font-size", "14px");
+        .text(`Goals Accomplished: ${goalsData.completed}`)// Text for Label Name
+        .attr("text-anchor", "middle")// positioning of the label
+        .style("fill", "green")// color and type of look
+        .style("font-size", "14px"); // size for the label type
+
+// the pie chart code begins here -
+
 
     const pieRadius = 100;
     const pieSvg = d3.select("#goals-pie").append("svg")
