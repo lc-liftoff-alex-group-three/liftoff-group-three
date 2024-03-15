@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+</head>
+<body>
+<h1>Blog Posts</h1>
+<div th:each="blog : ${blogs}">
+    <h2 th:text="${blog.title}"></h2>
+    <p th:text="${blog.content}"></p>
+    <p>Posted on: <span th:text="${blog.time}"></span></p>
+</div>
+</body>
+</html>

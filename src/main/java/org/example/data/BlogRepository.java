@@ -1,26 +1,12 @@
 package org.example.data;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.example.models.Blog;
+import org.springframework.data.domain.Sort;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class BlogRepository {
+public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
-    private static Map<Integer, Blog> blogs = new HashMap<>();
-
-    public static Collection<Blog> getAll() {
-        return blogs.values();     }
-    public static void add(Blog blog) {blogs.put(blog.getId(), blog);}
-    public static Blog getById (Integer id) { return blogs.get(id);}
-    public static void remove (Integer id) {
-        if (blogs
-                .containsKey(id)) {
-            blogs.remove(id);
-        }
-    }
-
-
-
+    List<Blog> findAll(Sort sort);
 }

@@ -1,24 +1,35 @@
 package org.example.controllers;
 
 
-import org.example.data.BlogRepository;
 import org.example.models.Blog;
+import org.example.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
+
 @Controller
-class BlogController {
+public class BlogController {
 
-    private BlogRepository blogData   = new BlogRepository();
+   @Autowired
+   private final BlogService blogService;
 
-    @GetMapping
-    public String home(Model model){
-        model.addAttribute("title", "Dragon Admin Blog");
-        model.addAttribute("blogs", BlogRepository.getAll());
-        return "home";
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
     }
+
+    @GetMapping("/blogs")
+    public String showBlogs(Model model) {
+        List<Blog> blogs = blogService.getBlogsSortedByTime();
+        model.addAttribute("blogs", blogs);
+        return "home";
+
+    }
+
 
     @GetMapping("/new-post")
     public String newPostForm(Model model){
@@ -28,7 +39,7 @@ class BlogController {
 
     @PostMapping("/new-post")
     public String handlePostForm(@ModelAttribute Blog blog, Model model) {
-        blogData.add(blog);
+        blogService.addBlog(blog);
         model.addAttribute("blog", blog);
         return "displayPost";
     }

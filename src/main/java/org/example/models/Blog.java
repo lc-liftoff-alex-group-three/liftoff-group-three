@@ -1,11 +1,18 @@
 package org.example.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
+@Entity
 public class Blog {
-
-    private int id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private static int nextId;
 @NotBlank(message = "Title can not be blank.")
 //@Size
@@ -21,7 +28,7 @@ public class Blog {
         this.content = content;
         this.status = status;
         this.time = LocalDate.now();
-        this.id = nextId;
+        this.id = (long) nextId;
         nextId++;
 
     }
@@ -59,6 +66,8 @@ public class Blog {
     }
 
     public int getId() {
-        return id;
+        return Math.toIntExact(id);
     }
+
+
 }
