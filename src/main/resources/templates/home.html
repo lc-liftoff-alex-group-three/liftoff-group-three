@@ -7,9 +7,9 @@
 <body>
 <p th:replace="fragments::navbar"></p>
 <div th:if="${blogs.size()} > 0">
-    <div th:each="blog : ${blogs}"> <!-- Corrected iteration over blogs -->
+    <div th:each="blog : ${blogs}">
         <div th:fragment="blog">
-            <h1 th:text="${blog.title}">Title</h1> <!-- Correct th:text usage -->
+            <h1 th:text="${blog.title}">Title</h1>
             <p th:text="${blog.content}">Content</p>
             <p th:text="'The latest and greatest ' + ${blog.status}">Status</p>
             <p th:text="${blog.time}">Time</p>

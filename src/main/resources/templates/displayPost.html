@@ -1,4 +1,4 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
@@ -6,11 +6,13 @@
 </head>
 <body>
 
-<p th: replace="fragments::navbar"></p>
-<p th:replace="home::blog"></p>
-<!--<h1 th:text ="${blog.title"></h1>-->
-<!--<p th:text="${blog.content"></p>-->
-<!--<p th:text="'The latest and greatest' + ${blog.status"></p>-->
-<!--<p th:text="${blog.time"></p>-->
+<p th:replace="fragments::navbar"></p>
+<!-- Ensure the following line is correct or remove if not needed -->
+<!-- <p th:replace="home::blog"></p> -->
+<h1 th:text="${blog.title}"></h1>
+<p th:text="${blog.content}"></p>
+<p th:text="'The latest and greatest ' + ${blog.status}"></p>
+<p th:text="${blog.time}"></p>
+
 </body>
 </html>
