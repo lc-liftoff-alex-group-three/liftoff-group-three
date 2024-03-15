@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BlogData {
+public class BlogRepository {
 
     private static Map<Integer, Blog> blogs = new HashMap<>();
 
